@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bharat Theme Documentation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #fafafa;
+      scroll-behavior: smooth;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      background: #111;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* padding: 12px 30px; */
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 1200;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+    .logo img {
+      height: 32px;
+      margin-right: 10px;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 260px;
+        background: #111;
+        color: #fff;
+        height: 100vh;
+        position: sticky;
+        top: 68px;
+        padding: 25px 20px;
+        overflow-y: auto;
+        transition: transform 0.3s ease;
+        z-index: 0;
+    }
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 25px;
+      color: #ffcc00;
+    }
+    .menu-item {
+      margin-bottom: 10px;
+    }
+    .menu-link {
+      display: block;
+      color: #ddd;
+      text-decoration: none;
+      padding: 10px 0;
+      transition: 0.3s;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .menu-link:hover,
+    .menu-link.active {
+      color: #ffcc00;
+      font-weight: 600;
+    }
+
+    /* Child menu */
+    .child-menu {
+      display: none;
+      margin-left: 15px;
+      border-left: 2px solid #333;
+      padding-left: 10px;
+    }
+    .child-menu a {
+      display: block;
+      font-size: 14px;
+      color: #aaa;
+      padding: 6px 0;
+      text-decoration: none;
+    }
+    .child-menu a:hover {
+      color: #ffcc00;
+    }
+    .menu-item.open .child-menu {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Content */
+    .main-container {
+        display: flex;
+    }
+    
+    .content {
+        width: 78%;
+        margin-left: 0;
+        padding: 1rem 1rem;
+        transition: margin-left 0.3s ease;
+    }
+    section {
+      min-height: 100vh;
+      padding: 40px;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section h2 {
+      color: #222;
+      border-left: 5px solid #ffcc00;
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
+    p {
+      line-height: 1.8;
+      color: #444;
+    }
+
+    /* Toggle button (Mobile) */
+    .menu-toggle, .sidebar-toggle {
+      display: none;
+      top: 15px;
+      background: #111;
+      color: #ffcc00;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1300;
+      border-radius: 6px;
+    }
+    .sidebar-toggle { left: 15px; }
+    .menu-toggle { right: 15px; }
+
+    /* Mobile Responsive */
+    @media(max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 15px;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.active {
+        transform: translateX(0);
+      }
+      .content {
+        margin-left: 0;
+        padding: 100px 20px 40px;
+      }
+      .sidebar-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <button class="sidebar-toggle">☰</button>
+            <div class="logo">
+                <img src="https://via.placeholder.com/40x40.png?text=B" alt="Bharat Logo">
+            </div>
+            <button class="menu-toggle">☰</button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="documantation.html">Documentation</a>
+                <a href="contact-us.html">Contact</a> 
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <div class="sidebar">
+                <h2>Docs Menu</h2>
+
+                <div class="menu-item">
+                <a class="menu-link" href="#intro">Introduction</a>
+                </div>
+
+                <div class="menu-item">
+                <a class="menu-link" href="#install">Installation</a>
+                </div>
+
+                <div class="menu-item">
+                <a class="menu-link toggle">Theme Settings ▾</a>
+                <div class="child-menu">
+                    <a href="#settings-colors">Colors</a>
+                    <a href="#settings-typography">Typography</a>
+                    <a href="#settings-layout">Layout</a>
+                </div>
+                </div>
+
+                <div class="menu-item">
+                <a class="menu-link toggle">Sections ▾</a>
+                <div class="child-menu">
+                    <a href="#sections-home">Homepage</a>
+                    <a href="#sections-product">Product Page</a>
+                    <a href="#sections-collection">Collection Page</a>
+                </div>
+                </div>
+
+                <div class="menu-item">
+                <a class="menu-link" href="#custom">Customization</a>
+                </div>
+
+                <div class="menu-item">
+                <a class="menu-link" href="#faq">FAQ</a>
+                </div>
+
+                <div class="menu-item">
+                <a class="menu-link" href="#support">Support</a>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <section id="intro">
+                <h2>Introduction</h2>
+                <p><b>Bharat Theme</b> is designed for Indian fashion stores. Clean, fast, and customizable.</p>
+                </section>
+
+                <section id="install">
+                <h2>Installation</h2>
+                <p>1. Go to Shopify → Online Store → Themes<br>
+                    2. Upload <b>bharat-theme.zip</b><br>
+                    3. Publish</p>
+                </section>
+
+                <section id="settings-colors">
+                <h2>Theme Settings - Colors</h2>
+                <p>Customize background, text and accent colors from theme editor.</p>
+                </section>
+
+                <section id="settings-typography">
+                <h2>Theme Settings - Typography</h2>
+                <p>Choose fonts suitable for fashion branding.</p>
+                </section>
+
+                <section id="settings-layout">
+                <h2>Theme Settings - Layout</h2>
+                <p>Control spacing, container width and grid styles.</p>
+                </section>
+
+                <section id="sections-home">
+                <h2>Sections - Homepage</h2>
+                <p>Hero Banner, Sliders, Product Showcase, Testimonials.</p>
+                </section>
+
+                <section id="sections-product">
+                <h2>Sections - Product Page</h2>
+                <p>Zoom feature, Size Guide, Related Products.</p>
+                </section>
+
+                <section id="sections-collection">
+                <h2>Sections - Collection Page</h2>
+                <p>Grid/List view, Filters, Sorting options.</p>
+                </section>
+
+                <section id="custom">
+                <h2>Customization</h2>
+                <p>Add custom CSS/JS for advanced design control.</p>
+                </section>
+
+                <section id="faq">
+                <h2>FAQ</h2>
+                <p><b>Q:</b> Does Bharat support demo content?<br>
+                    <b>A:</b> Yes, sample content is available.</p>
+                </section>
+
+                <section id="support">
+                <h2>Support</h2>
+                <p>Email: bharatthemes@gmail.com<br>
+                    WhatsApp: +91-7879386266</p>
+                </section>
+            </div>
+        </div>
+    </main>
+  <!-- JS -->
+  <script>
+    // Section animation on scroll
+    const sections = document.querySelectorAll("section");
+    function revealSections() {
+      sections.forEach(sec => {
+        let secTop = sec.getBoundingClientRect().top;
+        if (secTop < window.innerHeight - 100) {
+          sec.classList.add("visible");
+        }
+      });
+    }
+    window.addEventListener("scroll", revealSections);
+    revealSections();
+
+    // Child menu toggle
+    document.querySelectorAll(".menu-item .toggle").forEach(toggle => {
+      toggle.addEventListener("click", function() {
+        this.parentElement.classList.toggle("open");
+      });
+    });
+
+    // Sidebar toggle
+    const sidebar = document.querySelector(".sidebar");
+    const sidebarToggle = document.querySelector(".sidebar-toggle");
+    sidebarToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
+
+    // Header menu toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav");
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>
+ <li>Align the heading as per your preference (e.g., Left, Center, Right).</li>
+                            <li>Finally, fine-tune the spacing above and below the section using the section spacing slider.</li>
+                            <li>Optionally, utilize the option to add custom CSS for incorporating unique styles to the section.</li>
+                        </ol>
+                    </div>  
+                    <div id="customer_feedback" class="sub-tab-panel">
+                        <h2>Customer feedback</h2>
+                        <p>What is a Customer Feedback Section?</p>
+                        <p style="line-height:24px;">A customer feedback section is used to showcase reviews and testimonials from satisfied customers. This section helps build trust and credibility by highlighting positive experiences with your products or services. It typically includes a heading, customer review content, star ratings, and a call-to-action button.</p>
+                        <p>How to Set Up a Customer Feedback Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>Choose a color scheme to match the overall design of your website. You can customize these colors in the theme's color settings.</li>
+                            <li>Adjust the upper and lower spacing of the section.</li>
+                            <li>Add custom CSS for additional styling or layout adjustments to make the timer fit seamlessly with your theme.</li>
+                        </ol>
+                        <p>Content and Feedback Blocks:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>Add a heading for the section and adjust the heading size: Small, Medium, or Large, based on how prominent you want it to appear.</li>
+                            <li>Provide a short description about the reviews or testimonials.</li>
+                            <li>Select a button style: Primary, Secondary, or Outline and add a label for the button </li>
+                            <li>Paste a link for the button to direct users to a page where they can read all reviews or leave their own.</li>
+                            <li>Align the content to the Left, Center, or Right, depending on the design of your page.</li>
+                            <li>Add as many feedback blocks you desire and select a color scheme to highlight the feedback section distinctly.</li>
+                            <li>Add the feedback in the available field and add the writer's name and star rating for the feedback.</li>
+                        </ol>
+                    </div>   
+                    <div id="faq_accordion" class="sub-tab-panel">
+                        <h2>FA'Q Accordion</h2>
+                        <p>What is a FA'Q Accordion Section?</p>
+                        <p style="line-height:24px;">A FA'Q Accordion Section, commonly used for FAQs or information breakdowns, allows content to be hidden or revealed upon clicking a heading, creating a neat, organized layout. This section enhances user experience by keeping the page clean and focused, while still providing additional information when needed.</p>
+                        <p>Steps to Set Up a Toggle Tabs Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>In your Shopify admin, go to Online Store > Themes and click Customize to access the theme editor.</li>
+                            <li>Add the Toggle Tabs Section to your page from the available section options.</li>
+                            <li>On the right side of the editor, choose a color scheme from the available options to match your theme.</li>
+                            <li>Adjust the upper and lower section spacing to control the padding around the toggle tabs.</li>
+                            <li>If needed, add Custom CSS for unique styling of the section.</li>
+                        </ol>
+                        <p>Adding Content to Toggle Tabs:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>Add a Heading to the section, such as "FAQ’s," to indicate the purpose of the toggle tabs.</li>
+                            <li>Select the heading size (Small, Medium, Large) and align it to the left, center, or right as required.</li>
+                            <li>Include a summary to give users a brief introduction to the FAQs or the type of information provided.</li>
+                            <li>You can add a button to the section for additional functionality.</li>
+                            <li>Define the button label and paste the URL for the destination.</li>
+                            <li>Select a button style from Primary, Secondary, or Outline based on the visual design and align the button to the left, center, or right as per your layout preferences.</li>
+                            <li>Now add the collapsible row block and choose the color schemes to match the theme’s aesthetic or highlight certain sections.</li>
+                            <li>Select the heading size for the  collapsible row and align it to the left, center, or right as required.</li>
+                            <li>Include a summary to give users a brief introduction of the type of information provided.</li>
+                            <li>Use alignment and spacing settings to ensure the section fits seamlessly into the overall page design.</li>
+                        </ol>
+                    </div>   
+                    <div id="icon_with_text" class="sub-tab-panel">
+                        <h2>Text with icons</h2>
+                        <p>What is a Text with Icons Section?</p>
+                        <p style="line-height:24px;">A Text with Icons Section allows you to display important information accompanied by icons, adding visual emphasis and making the content more engaging. This section is ideal for showcasing key features, contact information, services, or benefits with a clear, icon-based visual aid next to the text.</p>
+                        <p>Steps to Set Up a Text with Icons Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>In your Shopify admin, go to Online Store > Themes and click Customize to enter the theme editor.</li>
+                            <li>Add the Text with Icons Section to your page from the available section options.</li>
+                            <li>On the right-hand side of the editor, customize the section settings by selecting a color scheme to match the design theme of your store.</li>
+                            <li>Set the heading size (Small, Medium, or Large) and align it to the left, center, or right as needed.</li>
+                            <li>Adjust icon placements to either default (inline with text), top (above the text), or reverse (icon on the right).</li>
+                            <li>Use the section spacing sliders to control the padding above and below the section for proper layout.</li>
+                        </ol>
+                        <p>Adding Information with Icons:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>After adding the section, set up individual blocks for the content.</li>
+                            <li>Add the main heading for the content.</li>
+                            <li>Set the heading size (Small, Medium, Large) and adjust alignment.</li>
+                            <li>Add a subheading for additional details, such as a phone number or email address.</li>
+                            <li>Choose relevant icons from the available options, icons can be selected from a pre-defined library available in the theme, allowing you to visually represent the content effectively.</li>
+                            <li>Use Custom CSS to add any specific styling preferences for icons, text, or the overall section design.</li>
+                        </ol>
+                    </div>   
+                    <div id="image_showcase" class="sub-tab-panel">
+                        <h2>Image showcase</h2>
+                        <p>What is an Image Showcase Section?</p>
+                        <p style="line-height:24px;">An Image Showcase Section is designed to display multiple images in a structured grid, allowing you to present visual content in a prominent and engaging format. This section is ideal for highlighting featured products, collections, or promotional banners. By using an image showcase, you can attract visitors' attention and provide clear calls to action through customizable buttons and headings.</p>
+                        <p>Steps to Set Up an Image Showcase Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>In the Shopify admin, navigate to Online Store > Themes and click Customize to enter the theme editor.</li>
+                            <li>Add the Image Showcase Section by selecting it from the list of available sections.</li>
+                            <li>On the right side of the editor, customize the section's settings by select a heading size (Small, Medium, or Large) and adjust the heading alignment (Left, Center, or Right).</li>
+                            <li>Choose the ratio of dimensions for the images (Adapt, Portrait, or Square-shaped) based on your design preferences.</li>
+                            <li>Set the grid layout to either 2 or 3 columns, depending on how many images you want to display in a row.</li>
+                            <li>Enable the swipe on mobile feature for improved navigation on smaller screens.</li>
+                            <li>Adjust the section spacing using the sliders to control the padding above and below the image showcase.</li>
+                            <li>Optionally, add Custom CSS to apply unique styles to the section for additional customization.</li>
+                            <p>Adding Blocks to the Image Showcase Section:</p>
+                            <ol class="sub-tab-panel__list">
+                            <li>After adding the Image Showcase Section, you can insert individual image blocks.</li>
+                            <li>Upload an image or select from Shopify’s free image gallery.</li>
+                            <li>Enter a tagline or short description that will appear above the image.</li>
+                            <li>Add a heading for each image block and choose the heading size (Small, Medium, or Large).</li>
+                            <li>Optionally, provide a subheading or more detailed description for each image block.</li>
+                            <li>Customize a button label (e.g., "View All") and include a button URL that links to relevant pages or product collections.</li>
+                            <li>Set the content position to control where the text and button are placed over the image.</li>
+                            <li>Repeat the process to add more images to the showcase, ensuring each block is optimized with a unique image, heading, and action link.</li>
+                            </ol>
+                        </ol>
+                    </div>    
+                    <div id="logo_gallery" class="sub-tab-panel">
+                        <h2>Logo Gallery </h2>
+                        <p>What is a Logo Gallery Section?</p>
+                        <p style="line-height:24px;">A Logo Gallery Section allows you to display a collection of logos in a visually appealing manner on your website. It can showcase multiple logos in a grid or carousel format, making it easy to present visual content like product logos or other relevant elements. You can upload, arrange, and customize the appearance of the logos to enhance the aesthetic and engagement of your site.</p>
+                        <p>Steps to Set Up a Logo Gallery Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>In the Shopify admin, navigate to Online Store > Themes and click Customize to enter the theme editor.</li>
+                            <li>Add the Logo Gallery Section to your page by selecting it from the available options.</li>
+                            <li>On the right side of the editor, customize the settings for the Logo Gallery Section. Start by expanding the section width according to your requirement.</li>
+                            <li>Now choose a color scheme from the five available options.</li>
+                            <li>Specify the grid layout for displaying logos per row and adjust the logo width to fit your design needs.</li>
+                            <li>Use the section spacing slider to fine-tune the spacing above and below the gallery section.</li>
+                            <li>Select the grid layout for the mobile interface from the available options and enable the swipe on mobile option if needed.</li>
+                            <li>Access the theme settings to enable the reveal sections on scroll option, if desired.</li>
+                            <li>Optionally, add custom CSS to apply unique styles to the Logo Gallery Section.</li>
+                        </ol>
+                        <p>Adding Blocks to the Logo Gallery Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>After adding the Logo Gallery Section, you can include a logo overview block within the section.</li>
+                            <li>For each block, upload the logo image, enter a heading, and provide the URL in the fields available on the right side of the editor.</li>
+                            <li>Repeat the process for additional blocks, customizing each block with the appropriate logo image, heading, and link.</li>
+                        </ol>
+                    </div>
+                    <div id="masnory_grid" class="sub-tab-panel">
+                        <p>Masnory Grid</p>
+                    </div>   
+                    <div id="material_highlights" class="sub-tab-panel">
+                        <p>Material Highlights</p>
+                    </div>   
+                    <div id="shop_the_look" class="sub-tab-panel">
+                        <p>Shop The Look</p>
+                    </div>   
+                    <div id="text_columns_with_image" class="sub-tab-panel">
+                        <h2>Text columns with image</h2>
+                        <p>What is a Text Column with Image Section?</p>
+                        <p style="line-height:24px;">A Text Column with Image Section is a versatile layout element that combines text and images in a grid format. This section allows you to present multiple pieces of content side by side, enhancing visual interest and providing detailed information about various topics or products. Each column can feature an image, heading, subheading, and description, making it ideal for showcasing features, services, or key highlights of your store.</p>
+                        <p>Steps to Set Up a Text Columns with Image Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>In the Shopify admin, go to Online Store > Themes and click Customize to enter the theme editor.</li>
+                            <li>Add the Text Column with Image Section to your page from the available section options.</li>
+                            <li>On the right side of the editor, customize the section settings by choose a color scheme for the section or edit theme colors through the color theme settings.</li>
+                            <li>Set the heading size (Small, Medium, or Large) and align the heading (Left, Center, or Right).</li>
+                            <li>Define the grid layout and the ratio of dimensions for the images (Adapt, Portrait, or Square-shaped).</li>
+                            <li>Adjust the section spacing using sliders to control the padding above and below the section.</li>
+                            <li>For mobile devices, set the grid layout to either 1 column or 2 columns to ensure a responsive design.</li>
+                        </ol>
+                        <p>Adding Blocks to the Text Columns with Image Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>After adding the section, you can include multiple text column blocks.</li>
+                            <li>Upload an image for each column or select from the free image gallery.</li>
+                            <li>Enter a heading for each column and choose the heading size (Small, Medium, or Large).</li>
+                            <li>Add a subheading if needed and provide a detailed description of the image or content.</li>
+                            <li>Optionally, enable a background color for the columns using the section’s color scheme.</li>
+                            <li>Customize the content alignment (Left, Center, or Right) to fit your layout needs.</li>
+                            <li>Include descriptions that explain the significance and function of each image or icon.</li>
+                            <li>Access Custom CSS to apply additional styles if required.</li>
+                        </ol>
+                    </div>
+                    <div id="text_marquee" class="sub-tab-panel">
+                        <h2>Text Marquee</h2>
+                        <p>What is a Text Marquee Section?</p>
+                        <p style="line-height:24px;">A Text Marquee Section is a dynamic component that allows text to move horizontally across a designated area on your website. This feature is used to highlight important messages, announcements, or promotional content in a visually engaging way. It enhances the design and interactivity of your site by conveying information efficiently, especially in limited screen space.</p>
+                        <p>Steps to Set Up a Text Marquee Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>In the Shopify admin, navigate to Online Store > Themes and click Customize to enter the theme editor.</li>
+                            <li>Add the Text Marquee Section from the available section options.</li>
+                            <li>Customize the settings for the Keep Scrolling Section by accessing the options on the right side of the editor.</li>
+                            <li>Choose a color scheme from the five available options and adjust the text size using the provided size option.</li>
+                            <li>Set the scrolling speed to one of the following: Slow, Medium, or Fast, based on your preference.</li>
+                            <li>Use the section spacing slider to fine-tune the spacing above and below the section for optimal alignment.</li>
+                            <li>Optionally, apply custom CSS to add unique styles to the Keep Scrolling Section.</li>
+                        </ol>
+                        <p>Adding Blocks to the Keep Scrolling Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>After adding the Keep Scrolling Section, you can include blocks for both scrolling text and scrolling links.</li>
+                            <li>For each block, enter the desired text and link in the fields provided. Users will be able to click on the text to access the linked content.</li>
+                        </ol>
+                    </div>
+                    <div id="ticking_timer" class="sub-tab-panel">
+                        <h2>Countdown stopwatch</h2>
+                        <p>What is a Countdown Stopwatch Section?</p>
+                        <p style="line-height:24px;">A countdown stopwatch section is a feature used to create a sense of urgency on your website by displaying a timer that counts down to a specific event or deadline. This is often used for limited-time offers, product launches, or sales. When the timer finishes, it can display a custom message, and you can also provide discount codes or promotional content to encourage conversions.</p>
+                        <p>How to Set Up a Countdown Stopwatch Section:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>Select a color scheme to match your site's design. You can modify the colors in your theme settings.</li>
+                            <li>Adjust the upper and lower spacing of the section.</li>
+                            <li>Add custom CSS for additional styling or layout adjustments to make the timer fit seamlessly with your theme.</li>
+                        </ol>
+                        <p>Timer and Discount Block Setup:</p>
+                        <ol class="sub-tab-panel__list">
+                            <li>Enable the timer to start counting down.</li>
+                            <li>Calendar Year, Month, and Day: Set the target date for the countdown.</li>
+                            <li>Hours and Minutes: Set the exact time for the event to occur .</li>
+                            <li>Select the size of the timer display: Small, Medium, or Large based on how prominent you want it to appear on the page.</li>
+                            <li>Enable or disable the label that explains the purpose of the countdown.</li>
+                            <li>Choose to hide the timer once it reaches zero or keep it visible and add a custom message that will appear when the countdown finishes.</li>
+                            <li>Now in the timer overview block add a heading for the timer . Adjust the heading size (Small, Medium, Large) to fit the design.</li>
+                            <li>Provide additional information or context for the countdown.</li>
+                            <li> In the discount block input a discount code to be displayed when the countdown ends.</li>
+                            <li>Set a button label to easily copy the discount code. When clicked, the label changes to "Copied!" for confirmation.</li>
+                            <li>Choose from three styles for the button: Primary, Secondary, or Outline.</li>
+                        </ol>
+                    </div>   
+                    <div id="white_space" class="sub-tab-panel">
+                        <p>White Space</p>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" class="tab-panel">
+                <div id="custom_code" class="sub-tab-panel">
+                <h2>Custom liquid</h2>
+                <p>What is a Custom Liquid Section?</p>
+                <p style="line-height:24px;">A custom liquid section allows experienced developers to add personalized, dynamic content to a Shopify store by writing custom Liquid code. This powerful tool enables developers to extend the functionality of the theme, creating unique features that go beyond the standard sections. However, it’s important to note that making changes using Liquid can introduce risks, particularly when it comes to future theme updates, so it's recommended for developers with coding expertise.</p>
+                <p>Steps to Set Up a Custom Liquid Section:</p>
+                <ol class="sub-tab-panel__list">
+                    <li>In the Shopify admin, go to Online Store > Themes and click Customize to access the theme editor.</li>
+                    <li>Add the Custom Liquid Section from the available options in the theme editor.</li>
+                    <li>After adding the section, locate the customization options on the right-hand side.</li>
+                    <li>In the provided field, insert your Liquid code. This can include custom logic, app snippets, or any advanced code to extend the functionality of your store.</li>
+                    <li>Choose a color scheme for the custom liquid section from the five available options to match your store’s aesthetic.</li>
+                    <li>Use the spacing slider to adjust the spacing above and below the section for better alignment with other elements on your store’s page.</li>
+                    <li>Optionally, add custom CSS for further styling and personalization of the section.</li>
+                </ol>
+                </div>   
+                <div id="text_marquee" class="sub-tab-panel">
+                <h2>Text Marquee</h2>
+                <p>What is a Text Marquee Section?</p>
+                <p style="line-height:24px;">A Text Marquee Section is a dynamic component that allows text to move horizontally across a designated area on your website. This feature is used to highlight important messages, announcements, or promotional content in a visually engaging way. It enhances the design and interactivity of your site by conveying information efficiently, especially in limited screen space.</p>
+                <p>Steps to Set Up a Text Marquee Section:</p>
+                <ol class="sub-tab-panel__list">
+                    <li>In the Shopify admin, navigate to Online Store > Themes and click Customize to enter the theme editor.</li>
+                    <li>Add the Text Marquee Section from the available section options.</li>
+                    <li>Customize the settings for the Keep Scrolling Section by accessing the options on the right side of the editor.</li>
+                    <li>Choose a color scheme from the five available options and adjust the text size using the provided size option.</li>
+                    <li>Set the scrolling speed to one of the following: Slow, Medium, or Fast, based on your preference.</li>
+                    <li>Use the section spacing slider to fine-tune the spacing above and below the section for optimal alignment.</li>
+                    <li>Optionally, apply custom CSS to add unique styles to the Keep Scrolling Section.</li>
+                </ol>
+                <p>Adding Blocks to the Keep Scrolling Section:</p>
+                <ol class="sub-tab-panel__list">
+                    <li>After adding the Keep Scrolling Section, you can include blocks for both scrolling text and scrolling links.</li>
+                    <li>For each block, enter the desired text and link in the fields provided. Users will be able to click on the text to access the linked content.</li>
+                </ol>
+                </div>
+                <div id="logo_gallery" class="sub-tab-panel">
+                <h2>Logo Gallery </h2>
+                <p>What is a Logo Gallery Section?</p>
+                <p style="line-height:24px;">A Logo Gallery Section allows you to display a collection of logos in a visually appealing manner on your website. It can showcase multiple logos in a grid or carousel format, making it easy to present visual content like product logos or other relevant elements. You can upload, arrange, and customize the appearance of the logos to enhance the aesthetic and engagement of your site.</p>
+                <p>Steps to Set Up a Logo Gallery Section:</p>
+                <ol class="sub-tab-panel__list">
+                    <li>In the Shopify admin, navigate to Online Store > Themes and click Customize to enter the theme editor.</li>
+                    <li>Add the Logo Gallery Section to your page by selecting it from the available options.</li>
+                    <li>On the right side of the editor, customize the settings for the Logo Gallery Section. Start by expanding the section width according to your requirement.</li>
+                    <li>Now choose a color scheme from the five available options.</li>
+                    <li>Specify the grid layout for displaying logos per row and adjust the logo width to fit your design needs.</li>
+                    <li>Use the section spacing slider to fine-tune the spacing above and below the gallery section.</li>
+                    <li>Select the grid layout for the mobile interface from the available options and enable the swipe on mobile option if needed.</li>
+                    <li>Access the theme settings to enable the reveal sections on scroll option, if desired.</li>
+                    <li>Optionally, add custom CSS to apply unique styles to the Logo Gallery Section.</li>
+                </ol>
+                <p>Adding Blocks to the Logo Gallery Section:</p>
+                <ol class="sub-tab-panel__list">
+                    <li>After adding the Logo Gallery Section, you can include a logo overview block within the section.</li>
+                    <li>For each block, upload the logo image, enter a heading, and provide the URL in the fields available on the right side of the editor.</li>
+                    <li>Repeat the process for additional blocks, customizing each block with the appropriate logo image, heading, and link.</li>
+                </ol>
+                </div>
+                <h2>Footer</h2>
+                <p>What is a Footer Section?</p>
+                <p style="line-height:24px;">A Footer Section is located at the bottom of a webpage and typically contains essential information and links relevant to your store or site. It’s an area for providing additional details about your business, offering navigation to important pages, and including contact information, social media links, and other relevant content.</p>
+                <p>Steps to Set Up a Footer Section:</p>
+                <ul class="sub-tab-panel__list" style="list-style-type:disc; line-height:22px;">
+                <li>Expand the width of the footer to match your design preferences.</li>
+                <li>Choose a color scheme from the available options to match the overall look of your site. For this theme, Scheme 2 is provided as a preset.</li>
+                <li>Configure your language settings in the Language Settings section and choose a country or region in Market Settings to localize your store.</li>
+                <li>Enable the following localization options as needed:
+                    <ul style="list-style-type:circle; display:flex; flex-direction:column; gap:8px; margin-top:8px;line-height:22px;">
+                    <li style="font-family:var(--body-font-family);">Show Country Selector to allow visitors to select their country or region from the footer.</li>
+                    <li style="font-family:var(--body-font-family);">Show Country Name to display the selected country in the footer.</li>
+                    <li style="font-family:var(--body-font-family);">Show Language Selector to let visitors choose their preferred language.</li>
+                    </ul>
+                </li>
+                <li>Enable Follow on Shop to allow customers to follow your store on the Shop app directly from your storefront. Ensure Shop Pay is enabled to use this feature. Learn more about Shop Pay.</li>
+                <li>Include a link to Shopify in the footer by enabling the Powered by Shopify Link option.</li>
+                <li>Add additional text, such as "All rights reserved," in the footer for legal disclaimers or other messages.</li>
+                <li>Display links to store policies, such as return and privacy policies, by enabling Policy Links. Configure these policies in your Policy Settings.</li>
+                <li>Show accepted payment options by enabling Payment Icons in the footer.</li>
+                <li>Adjust section padding to control spacing around the footer:
+                    <ul style="list-style-type:circle; display:flex; flex-direction:column; gap:8px; margin-top:8px;line-height:22px;">
+                    <li style="font-family:var(--body-font-family);">Top Padding: Default value is 40.</li>
+                    <li style="font-family:var(--body-font-family);">Bottom Padding: Default value is 40.</li>
+                    </ul>
+                </li>
+                </ul>
+                <p>Adding Content to the Footer Section:</p>
+                <div class="sub-tab-content">
+                <div id="text_block" class="sub-tab-panel active">
+                    <h2>Text Block:</h2>
+                    <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px;margin-top:8px;line-height:22px;">
+                    <li style="font-family:var(--body-font-family);">Add a Text Block to include descriptive or informational content in your footer.</li>
+                    <li style="font-family:var(--body-font-family);">Customize the heading for the text section.</li>
+                    <li style="font-family:var(--body-font-family);">Enter your content in the text area (e.g., "About us").</li>
+                    <li style="font-family:var(--body-font-family);">Upload a logo image if needed:
+                        <ul style="list-style-type:circle; display:flex; flex-direction:column; gap:8px;margin-top:8px;line-height:22px;">
+                        <li style="font-family:var(--body-font-family);">Click Upload Image to add a file.</li>
+                        <li style="font-family:var(--body-font-family);">Alternatively, use the Explore Free Images option.</li>
+                        </ul>
+                    </li>
+                    <li style="font-family:var(--body-font-family);">Adjust the Image Width to set the logo’s size. Default value: 165.</li>
+                    </ul>
+                </div>
+                <div id="menu_block" class="sub-tab-panel">
+                    <h2>Menu Block:</h2>
+                    <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px;margin-top:8px;line-height:22px;">
+                    <li style="font-family:var(--body-font-family);">Add a Menu Block to display navigation links in your footer.</li>
+                    <li style="font-family:var(--body-font-family);">Customize the heading for the menu section.</li>
+                    <li style="font-family:var(--body-font-family);">Select a menu to display in the block:
+                        <ul style="list-style-type:circle; display:flex; flex-direction:column; gap:8px;margin-top:8px;line-height:22px;">
+                        <li style="font-family:var(--body-font-family);">Default option: Footer menu.</li>
+                        </ul>
+                    </li>
+                    <li style="font-family:var(--body-font-family);">Use the following options to manage your menu block:
+                        <ul style="list-style-type:circle; display:flex; flex-direction:column; gap:8px;margin-top:8px;line-height:22px;">
+                        <li style="font-family:var(--body-font-family);">Change Menu: Update the menu displayed in the block.</li>
+                        <li style="font-family:var(--body-font-family);">Remove Menu: Delete the menu block from the footer.</li>
+                        </ul>
+                    </li>
+                    </ul>
+                </div>
+                <div id="newsletter_block" class="sub-tab-panel">
+                    <h2>Newsletter Block:</h2>
+                    <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px;margin-top:8px;line-height:22px;">
+                    <li style="font-family:var(--body-font-family);">Add a Newsletter Block to allow customers to subscribe to your store updates.</li>
+                    <li style="font-family:var(--body-font-family);">Customize the heading for the newsletter section (e.g., "Our Newsletter").</li>
+                    <li style="font-family:var(--body-font-family);">Enable Social Media Icons to display links to your social media accounts:
+                        <ul style="list-style-type:circle; display:flex; flex-direction:column; gap:8px;margin-top:8px;line-height:22px;">
+                        <li style="font-family:var(--body-font-family);">Configure your social media links in the Theme Settings.</li>
+                        </ul>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            <div id="theme" class="tab-panel">
+                <div class="sub-tab-content">
+                    <div id="general" class="sub-tab-panel">
+                        <h2>General</h2>
+                        <p>General Theme Settings</p>
+                        <p style="line-height:24px;">General Theme Settings allow you to control the foundational aspects of your website’s appearance and functionality, including favicon management, container width, and animations.</p>
+                        <ol class="sub-tab-panel__list">
+                        <li>Favicon Image:
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px;line-height:22px;">
+                            <li>The favicon is a small icon displayed in the browser tab next to the website title.</li>
+                            <li>You can upload your favicon image by clicking on "Upload Images."</li>
+                            <li>Note: The favicon will be scaled down to 32 x 32px, so ensure the image is clear at small sizes.</li>
+                            </ul>
+                        </li>
+                        <li>Formation:
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px;line-height:22px;">
+                            <li>Adjust the container width to control how wide your site's content is displayed.</li>
+                            <li>A wider container provides a more spacious layout, while a narrower one creates a more compact look.</li>
+                            </ul>
+                        </li>
+                        <li>Animations:
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px;line-height:22px;">
+                            <li>Enable Reveal Sections on Scroll option to create a smooth scrolling experience where sections of your site reveal themselves as users scroll down the page. This can enhance engagement by providing a dynamic browsing experience.</li>
+                            </ul>
+                        </li>
+                        </ol>
+                    </div>
+                    <div id="shade" class="sub-tab-panel active">
+                        <h2>Shade</h2>
+                        <p>Shade and Schemes Settings</p>
+                        <p style="line-height:24px;">The Shade and Schemes section allows you to manage your store's color schemes and customize specific color settings for success/error messages and product badges.</p>
+                        <ol class="sub-tab-panel__list">
+                        <li>Color Schemes:
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px;line-height:22px;">
+                            <li>You can apply different color schemes to various sections of your store. Create a cohesive visual identity by using consistent colors across the site.</li>
+                            <li>You also have the option to add new color schemes that fit your design needs.</li>
+                            </ul>
+                        </li>
+                        <li>Message Colors
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px;line-height:22px;">
+                            <li>Success message background: Adjust the background color of success notifications to match your color scheme.</li>
+                            <li>Success message color: Change the text color of the success message to ensure it stands out.</li>
+                            <li>Error message background: Customize the error message background to provide a distinct visual cue for users.</li>
+                            <li>Error message color: Modify the error message text color to ensure visibility and alignment with your store’s theme.</li>
+                            </ul>
+                        </li>
+                        <li>Product Badges
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+                            <li>Add custom badges to products to highlight specific categories such as sales, bestsellers, or other unique tags.</li>
+                            </ul>
+                        </li>
+                        </ol>
+                    </div>
+                    <div id="typography" class="sub-tab-panel">
+                        <h2>Typography</h2>
+                        <p>Typography Settings Guide</p>
+                        <p style="line-height:24px;">The Typography section allows you to customize the font styles and sizes for headings and body text across your Shopify store. You can control the visual hierarchy, readability, and overall aesthetic by adjusting fonts and scales.</p>
+                        <ol class="sub-tab-panel__list">
+                        <li>Headings
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px;line-height:22px;">
+                            <li>Select a font for headings. </li>
+                            <li>Adjust the scale of your headings to control their size relative to the default.</li>
+                            <li>Adjust the scale of your headings to control their size relative to the default.</li>
+                            </ul>
+                        </li>
+                        <li>Body
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px; line-height:22px;">
+                            <li>Choose a font for your body text. </li>
+                            <li>Similar to headings, selecting a custom font for body text may impact store speed.</li>
+                            <li>Adjust the size of body text to suit the design of your store.</li>
+                            </ul>
+                        </li>
+                        </ol>
+                    </div>
+                    <div id="social_platforms" class="sub-tab-panel">
+                        <h2>Social platforms</h2>
+                        <p>Social Platforms Settings</p>
+                        <p style="line-height:24px;">The Social Platforms section allows you to connect and display your store's social media accounts, providing easy access for customers to follow and engage with your brand across various platforms.</p>
+                        <p>Sharing Links</p>
+                        <ul style="list-style-type:disc; display:flex; flex-direction:column; gap: 10px;line-height: 22px; margin-top:8px;">
+                        <li style="font-family:var(--body-font-family); line-height:22px;">Add the URLs for each social platform your brand is active on. When the links are set up, the corresponding social icons will be displayed on your store, allowing visitors to easily connect with your profiles.</li>
+                        <li style="font-family:var(--body-font-family);">Available Platform Options :
+                            <ul style="list-style:none; display:flex; flex-direction:column; gap: 5px;margin-top:8px;">
+                            <li style="font-family:var(--body-font-family);">Facebook</li>
+                            <li style="font-family:var(--body-font-family);">Instagram</li>
+                            <li style="font-family:var(--body-font-family);">YouTube</li>
+                            <li style="font-family:var(--body-font-family);">TikTok</li>
+                            <li style="font-family:var(--body-font-family);">X / Twitter</li>
+                            <li style="font-family:var(--body-font-family);">Snapchat</li>
+                            <li style="font-family:var(--body-font-family);">Pinterest</li>
+                            <li style="font-family:var(--body-font-family);">Tumblr</li>
+                            <li style="font-family:var(--body-font-family);">Vimeo</li>
+                            <li style="font-family:var(--body-font-family);">WhatsApp</li>
+                            </ul>
+                        </li>
+                        </ul>
+                    </div>
+                    <div id="quick_search" class="sub-tab-panel">
+                        <h2>Quick search</h2>
+                        <p>Quick Search Settings </p>
+                        <p style="line-height:24px;">The Quick Search section allows you to optimize the search functionality of your online store by enabling features that improve user experience and assist customers in finding what they are looking for faster.</p>
+                        <ol class="sub-tab-panel__list">
+                        <li>Search Suggestions
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px;line-height:22px;">
+                            <li>To help users find products more easily, enabling Search Suggestions will display relevant items as they type in the search bar.</li>
+                            <li>Enable search suggestions, activates the display of related products or collections when a customer begins typing in the search field.</li>
+                            <li>Display the vendor or brand of the product in search suggestions.</li>
+                            <li>Display the price of the product alongside the search suggestions.</li>
+                            </ul>
+                        </li>
+                        <li>Display Suggestions:
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px; line-height:22px;">
+                            <li>You can customize how search suggestions are presented on your site to offer the best navigation experience.</li>
+                            <li>Set the heading text for the suggestions section. </li>
+                            <li>Select a menu from your store’s navigation to display as part of the suggestions. Note that this menu does not support dropdown items and is best limited to 4-5 links for optimal user experience.</li>
+                            </ul>
+                        </li>
+                        </ol>
+                    </div>
+                    <div id="currency_format" class="sub-tab-panel">
+                        <h2>Currency format</h2>
+                        <p>Currency Format Settings </p>
+                        <p style="line-height:24px;">The Currency Format section helps you control how prices and currency are displayed on your online store, particularly in the cart and checkout processes.</p>
+                        <p>Currency Codes</p>
+                        <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px; line-height:22px;">
+                        <li style="font-family:var(--body-font-family);">This option ensures that currency codes (e.g., USD, EUR, GBP) are always visible to provide clarity on the currency being used.</li>
+                        <li style="font-family:var(--body-font-family);">Show currency codes: Enabling this option will display the currency code next to the price at checkout and in the cart. For example, instead of showing "$1.00," it will display as "$1.00 USD" to make it clear which currency is being used.</li>
+                        </ul>
+                    </div>
+                    <div id="cart" class="sub-tab-panel">
+                        <h2>Cart</h2>
+                        <p>Cart Settings </p>
+                        <p style="line-height:24px;">The Cart Settings section allows you to customize the appearance and functionality of your store's cart. These settings determine how customers interact with their cart and what information is shown.</p>
+                        <ol class="sub-tab-panel__list">
+                        <li>Cart Type
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px; line-height:22px;">
+                            <li>Choose how the cart is displayed when a customer adds items: Drawer or Page.</li>
+                            <li>Show Vendor: Enable this option to display the vendor or brand name next to the products in the cart.</li>
+                            <li>Enable Cart Note: This option allows customers to add notes to their order in the cart.</li>
+                            </ul>
+                        </li>
+                        <li>Recommendations
+                            <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px; line-height:22px;">
+                            <li>You can display dynamic product recommendations to your customers in the cart. These recommendations update based on order and product information.</li>
+                            <li>Turn on this feature to suggest related products to customers.</li>
+                            <li>Customize the heading for the product recommendation section.</li>
+                            <li>Select a color scheme from your theme settings for this section to ensure it matches your store's design.</li>
+                            </ul>
+                        </li>
+                        </ol>
+                    </div>
+                    <div id="custom_css" class="sub-tab-panel">
+                        <h2>Custom CSS</h2>
+                        <p>Custom CSS Guide</p>
+                        <p style="line-height:24px;">The Custom CSS feature allows you to apply additional styling to your entire online store by writing custom CSS code. This option is useful for adding unique styles beyond the default theme options, helping you achieve specific visual or layout changes that aren't available in the theme settings.</p>
+                        <p>Input Your CSS Code</p>
+                        <ul style="list-style-type:disc; display:flex; flex-direction:column; gap:8px; margin-top:8px; line-height:22px;">
+                        <li style="font-family:var(--body-font-family);">Enter your custom CSS styles directly into the provided field. You can add any valid CSS, such as changing colors, fonts, spacing, and more.</li>
+                        <li style="font-family:var(--body-font-family);">Once you add your CSS, it will automatically apply across your store. Use the preview function to see how your custom styles look before publishing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="position_arrow small-hide medium-hide button--outline">     
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.4712 4.47157C10.7316 4.21122 10.7316 3.78911 10.4712 3.52876C10.2109 3.26841 9.78878 3.26841 9.52843 3.52876L5.52843 7.52876C5.26808 7.78911 5.26808 8.21122 5.52843 8.47157L9.52843 12.4716C9.78878 12.7319 10.2109 12.7319 10.4712 12.4716C10.7316 12.2112 10.7316 11.7891 10.4712 11.5288L6.94265 8.00016L10.4712 4.47157Z" fill="white" fill-opacity="0.8"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <script src="asset/doc_section.js"></script>
+</body>
+</html>
